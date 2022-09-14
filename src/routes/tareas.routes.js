@@ -1,13 +1,13 @@
 
 import { Router } from 'express';
-import { crearProducto, listarProducto, obtenerProducto } from '../controllers/productos.controller';
+import {borrarrTarea, crearTarea, editarTarea, listarTarea, obtenerTarea } from '../controllers/Tareas.controller';
 const router = Router();
 //rutas de los productos
 router
 .route('/')
-.get(listarProducto)
-.post(crearProducto);
+.get(listarTarea )
+.post(crearTarea);
 export default router;
 
-router.route('/productos/:id')
-.get(obtenerProducto).put().delete();
+router.route('/tareas/:id')
+.get(obtenerTarea).put(editarTarea).delete(borrarrTarea);

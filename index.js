@@ -22,4 +22,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 
 //rutas
-app.use('/api', router);
+app.use('/apitareas', router);
