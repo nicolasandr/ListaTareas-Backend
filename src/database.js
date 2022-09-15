@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const url = 'mongodb://127.0.0.1:27017/listaTareas';
+const url = 'mongodb://127.0.0.1:27017/listaTareas2';
 mongoose.connect(url);
 
 const connection = mongoose.connection;

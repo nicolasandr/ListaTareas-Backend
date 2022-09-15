@@ -4,10 +4,11 @@ import {borrarrTarea, crearTarea, editarTarea, listarTarea, obtenerTarea } from 
 const router = Router();
 //rutas de los productos
 router
-.route('/')
-.get(listarTarea )
-.post(crearTarea);
-export default router;
+.route('/tareas')
+.get(listarTarea)
+.post(crearTarea)
 
 router.route('/tareas/:id')
 .get(obtenerTarea).put(editarTarea).delete(borrarrTarea);
+
+export default router;

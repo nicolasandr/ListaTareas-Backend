@@ -14,20 +14,31 @@ export const crearTarea = async (req, res) => {
 
         //enviar respuesta al frontend
          res.status(201).json({
-             mensaje: 'La tarea fue creada exitosamente',
+             mensaje: 'La tarea fue creada exitosamente'
          });
 
         //si algo falla tambien enviar una respuesta
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje: 'la Tarea enviada no pudo ser creada',
+            mensaje: 'la Tarea enviada no pudo ser creada'
         });
     }
 };
 
-export const listarTarea = (req, res) => {
-    res.send('enviar lista de tareas');
+export const listarTarea = async (req, res) => {
+     try {
+        //buscar en la BD la coleccion de productos
+        const listaTareas = await Tarea.find();
+        //enviar la respuesta
+        res.status(200).json(listaTareas);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:'Error al buscar las tareas'
+        })
+        
+    }
 };
 
 export const obtenerTarea = (req, res) => {

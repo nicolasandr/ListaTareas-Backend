@@ -4,16 +4,15 @@ const tareaSchema = new Schema({
         type: String,
         required: true,
         minlength: 2,
-        maxlength: 50,
-        unique: true,
+        maxlength: 50
+        // unique: true
     },
     detalleTarea: {
         type: String,
         required: true,
         minlength: 2,
-        maxlength: 200,
-        unique: true,
-    },
+        maxlength: 200
+    }
 });
 
 const Tarea = mongoose.model('tarea', tareaSchema);
