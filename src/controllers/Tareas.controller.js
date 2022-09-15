@@ -41,8 +41,20 @@ export const listarTarea = async (req, res) => {
     }
 };
 
-export const obtenerTarea = (req, res) => {
-    res.send('aqui obtengo la tarea');
+export const obtenerTarea = async (req, res) => {
+   try {
+            //buscamos el id que todavia no tenemos
+            console.log(req.params.id) 
+        //buscar en la BD la coleccion de productos
+        const tareaBuscada = await Tarea.findById(req.params.id);
+        //enviar la respuesta
+        res.status(200).json(tareaBuscada);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:'Error al buscar los productos'
+        })
+    }
 };
 
 export const editarTarea = (req, res) => {
