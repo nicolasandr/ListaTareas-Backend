@@ -60,6 +60,17 @@ export const obtenerTarea = async (req, res) => {
 export const editarTarea = (req, res) => {
     res.send('aqui editamos la tarea');
 };
-export const borrarrTarea = (req, res) => {
-    res.send('aqui borramos la tarea');
+export const borrarrTarea = async (req, res) => {
+   try {
+       //buscar la tarea por el id en la collection de productos de la BD y luego borrar
+      await Tarea.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: 'La tarea fue eliminada correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'error al intentar buscar la tarea',
+        });
+   }
 };
