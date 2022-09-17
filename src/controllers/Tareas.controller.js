@@ -1,5 +1,4 @@
 import Tarea from '../models/tarea';
-import { validationResult } from 'express-validator';
 
 export const crearTarea = async (req, res) => {
     try {
@@ -8,8 +7,7 @@ export const crearTarea = async (req, res) => {
         
         //crear un objeto para guardar en la BD
         const tareaNueva = new Tarea({
-            nombreTarea: req.body.nombreTarea,
-            detalleTarea: req.body.detalleTarea
+            nombreTarea: req.body.nombreTarea
         });
         //guardar efectivamente en la BD
         await tareaNueva.save();
