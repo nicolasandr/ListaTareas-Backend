@@ -52,7 +52,7 @@ export const obtenerTarea = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje:'Error al buscar los productos'
+            mensaje:'Error al buscar las tareas'
         })
     }
 };
@@ -63,12 +63,12 @@ export const editarTarea = async (req, res) => {
         //buscar la tarea por id y luego modificarla
        await Tarea.findByIdAndUpdate(req.params.id,req.body)
         res.status(200).json({
-            mensaje: 'el producto fue modificado',
+            mensaje: 'La tarea fue modificada',
         });
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje: 'Error al buscar los productos',
+            mensaje: 'Error al buscar las tareas',
         });
     }
 };
