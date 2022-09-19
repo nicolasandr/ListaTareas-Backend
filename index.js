@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'), () => {
     console.log('Estamos en el puerto ' + app.get('port'));
 });
- //middlewares (funciones pequeñas para una actividad puntual)
+//middlewares (funciones pequeñas para una actividad puntual)
 app.use(morgan('dev'));
 app.use(cors('dev'));
 app.use(express.json());

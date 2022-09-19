@@ -4,30 +4,30 @@ export const crearTarea = async (req, res) => {
     try {
         console.log(req.body);
         //validacion
-        
+
         //crear un objeto para guardar en la BD
         const tareaNueva = new Tarea({
-            nombreTarea: req.body.nombreTarea
+            nombreTarea: req.body.nombreTarea,
         });
         //guardar efectivamente en la BD
         await tareaNueva.save();
 
         //enviar respuesta al frontend
-         res.status(201).json({
-             mensaje: 'La tarea fue creada exitosamente'
-         });
+        res.status(201).json({
+            mensaje: 'La tarea fue creada exitosamente',
+        });
 
         //si algo falla tambien enviar una respuesta
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje: 'la Tarea enviada no pudo ser creada'
+            mensaje: 'la Tarea enviada no pudo ser creada',
         });
     }
 };
 
 export const listarTarea = async (req, res) => {
-     try {
+    try {
         //buscar en la BD la coleccion de productos
         const listaTareas = await Tarea.find();
         //enviar la respuesta
@@ -35,16 +35,15 @@ export const listarTarea = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje:'Error al buscar las tareas'
-        })
-        
+            mensaje: 'Error al buscar las tareas',
+        });
     }
 };
 
 export const obtenerTarea = async (req, res) => {
-   try {
-            //buscamos el id que todavia no tenemos
-            console.log(req.params.id) 
+    try {
+        //buscamos el id que todavia no tenemos
+        console.log(req.params.id);
         //buscar en la BD la coleccion de productos
         const tareaBuscada = await Tarea.findById(req.params.id);
         //enviar la respuesta
@@ -52,16 +51,16 @@ export const obtenerTarea = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje:'Error al buscar las tareas'
-        })
+            mensaje: 'Error al buscar las tareas',
+        });
     }
 };
 
 export const editarTarea = async (req, res) => {
     try {
-        //validacion 
+        //validacion
         //buscar la tarea por id y luego modificarla
-       await Tarea.findByIdAndUpdate(req.params.id,req.body)
+        await Tarea.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({
             mensaje: 'La tarea fue modificada',
         });
@@ -73,9 +72,9 @@ export const editarTarea = async (req, res) => {
     }
 };
 export const borrarrTarea = async (req, res) => {
-   try {
-       //buscar la tarea por el id en la collection de productos de la BD y luego borrar
-      await Tarea.findByIdAndDelete(req.params.id);
+    try {
+        //buscar la tarea por el id en la collection de productos de la BD y luego borrar
+        await Tarea.findByIdAndDelete(req.params.id);
         res.status(200).json({
             mensaje: 'La tarea fue eliminada correctamente',
         });
@@ -84,5 +83,5 @@ export const borrarrTarea = async (req, res) => {
         res.status(400).json({
             mensaje: 'error al intentar buscar la tarea',
         });
-   }
+    }
 };
